@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Background */
+  --bg-primary:   #080c14;
+  --bg-secondary: #0d1117;
+  --bg-tertiary:  #111827;
+  --bg-overlay:   #1a2235;
+
+  /* Accent */
+  --accent-cyan:    #00d4ff;
+  --accent-cyan-dim:#00a8cc;
+  --accent-green:   #00ff9d;
+  --accent-amber:   #ffb800;
+  --accent-red:     #ff3d5a;
+  --accent-purple:  #9b59ff;
+
+  /* Text */
+  --text-primary:   #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted:     #475569;
+
+  /* Border */
+  --border-subtle:  #1e293b;
+  --border-default: #2d3748;
+  --border-active:  rgba(0, 212, 255, 0.2);
+
+  /* Fonts */
+  --font-display: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-body:    'IBM Plex Sans', 'Segoe UI', sans-serif;
+
+  /* Shadows */
+  --shadow-card:  0 0 0 1px #1e293b, 0 4px 24px rgba(0,0,0,0.4);
+  --shadow-glow:  0 0 20px rgba(0, 212, 255, 0.15);
+  --shadow-alert: 0 0 20px rgba(255, 61, 90, 0.2);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+/* Scrollbar enterprise style */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-cyan);
+}
+
+/* Utilities */
+.font-mono { font-family: var(--font-display); }
+.text-cyan  { color: var(--accent-cyan); }
+.text-green { color: var(--accent-green); }
+.text-amber { color: var(--accent-amber); }
+.text-red   { color: var(--accent-red); }
+.text-muted { color: var(--text-muted); }
+
+/* Glow pulse animation for live indicators */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; box-shadow: 0 0 4px currentColor; }
+  50%       { opacity: 0.6; box-shadow: 0 0 12px currentColor; }
+}
+
+@keyframes scan-line {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+.animate-fade-in-up { animation: fade-in-up 0.3s ease-out forwards; }
